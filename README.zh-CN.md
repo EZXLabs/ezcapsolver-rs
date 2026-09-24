@@ -899,7 +899,7 @@ let config = ClientConfig::builder()
 | `async_base_url` | `https://api.ez-captcha.com` | 异步任务与余额查询 |
 | `sync_base_url` | `https://sync.ez-captcha.com` | 同步任务；服务端把两套部署拆开了 |
 
-用 `.with_base_urls(async_url, sync_url)` 改 base URL，可以指向私有网关或测试服务器。要自带 HTTP 客户端（共享连接池、装中间件、换 TLS 配置），用 `with_http_client(config, http)` 构造客户端，该客户端自己的 transport 与 header 会原样生效，`X-API-Key` 请求头仍会附加到每个请求上。
+用 `.with_base_urls(async_url, sync_url)` 改 base URL，可以指向私有网关或测试服务器。要自带 HTTP 客户端（共享连接池、装中间件、换 TLS 配置），用 `with_http_client(config, http)` 构造客户端，该客户端自己的 transport 与 header 会原样生效。
 
 服务端只保留任务结果 **5 分钟**。超出这个窗口的轮询预算不可能成功，对更早的任务调 `wait_for_result` 会拿到 `ERROR_TASK_NOT_EXIST`。
 

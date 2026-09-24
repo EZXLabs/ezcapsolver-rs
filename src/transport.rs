@@ -27,9 +27,8 @@ pub(crate) const CLIENT_KEY_HEADER: &str = "X-API-Key";
 /// value is rejected here as a configuration error, rather than failing every
 /// request later with an opaque transport error.
 pub(crate) fn client_key_header(client_key: &str) -> Result<HeaderValue> {
-    let mut value = HeaderValue::from_str(client_key).map_err(|_| {
-        Error::config("client key contains characters that are not allowed in an HTTP header")
-    })?;
+    let mut value = HeaderValue::from_str(client_key)
+        .map_err(|_| Error::config("client key contains invalid characters"))?;
     value.set_sensitive(true);
     Ok(value)
 }

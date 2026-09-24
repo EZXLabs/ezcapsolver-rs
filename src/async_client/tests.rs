@@ -881,7 +881,7 @@ fn a_client_key_that_is_not_a_valid_header_value_is_rejected() {
 
     assert!(matches!(
         error,
-        Some(Error::Message(message)) if message.contains("HTTP header")
+        Some(Error::Message(message)) if message.contains("invalid characters")
     ));
 }
 

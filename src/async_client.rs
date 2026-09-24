@@ -72,7 +72,7 @@ impl AsyncEzCapSolverClient {
     /// Use it to share a connection pool, or to install a middleware stack or a
     /// custom TLS setup. [`ClientConfig::proxy`] and [`ClientConfig::user_agent`]
     /// are **not** applied to it — the supplied client brings its own transport
-    /// and headers. Per-request timeouts and the `X-API-Key` header still are.
+    /// and headers. Per-request timeouts still are.
     pub fn with_http_client(config: ClientConfig, http: reqwest::Client) -> Result<Self> {
         let client_key = config.resolve_client_key()?;
         let client_key_header = client_key_header(&client_key)?;

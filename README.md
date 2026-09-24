@@ -907,7 +907,7 @@ All settings are optional: `ClientConfig::builder().build()` equals `ClientConfi
 | `async_base_url` | `https://api.ez-captcha.com` | Asynchronous tasks and balance queries |
 | `sync_base_url` | `https://sync.ez-captcha.com` | Synchronous tasks; the service splits the two deployments |
 
-Set `async_base_url` / `sync_base_url` with `.with_base_urls(async_url, sync_url)` to reach a private gateway or a test server. To bring your own HTTP client — a shared pool, a middleware stack, a custom TLS setup — build the client with `with_http_client(config, http)`; that client's own transport and headers are used as they are, and the `X-API-Key` header is still added to every request.
+Set `async_base_url` / `sync_base_url` with `.with_base_urls(async_url, sync_url)` to reach a private gateway or a test server. To bring your own HTTP client — a shared pool, a middleware stack, a custom TLS setup — build the client with `with_http_client(config, http)`; that client's own transport and headers are used as they are.
 
 The service keeps a task result for **five minutes** after creation. A polling budget past that cannot succeed, and `wait_for_result` on an older task returns `ERROR_TASK_NOT_EXIST`.
 
