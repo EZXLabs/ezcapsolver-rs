@@ -1,0 +1,105 @@
+name: CI
+
+# When pushing the main branch
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Read-only by default. No job here writes to the repository, and an
+# unspecified block inherits whatever the repository setting happens to be.
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  lint:
+    name: Format & Clippy & Doc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: cargo fmt
+        run: cargo fmt --all -- --check
+      - name: cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: cargo doc
+        run: cargo doc --no-deps --all-features
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+  test:
+    name: Test (${{ matrix.toolchain }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The MSRV declared in Cargo.toml, and whatever is current. A library has
+        # to keep working on both: the MSRV is a promise to callers pinned to an
+        # older compiler, and stable is where everyone else actually builds.
+        #
+        # `rust-toolchain.toml` pins the channel to the MSRV, and setup-rust-toolchain
+        # honours that file — so without naming the toolchain here, every job would
+        # silently run on the MSRV and stable would never be exercised at all.
+        toolchain: ["1.96.0", "stable"]
+    env:
+      # rustup reads rust-toolchain.toml from the working directory and switches
+      # to the channel named there, whatever was installed. RUSTUP_TOOLCHAIN
+      # outranks that file, and is what actually makes the stable leg run on
+      # stable rather than quietly re-running the MSRV a second time.
+      RUSTUP_TOOLCHAIN: ${{ matrix.toolchain }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: nextest
+      - name: cargo nextest
+        run: cargo nextest run --all-features --no-tests pass
+
+      # nextest does not run doctests, so without this step the assertions and
+      # `compile_fail` guards in the API documentation are never checked.
+      - name: cargo test --doc
+        run: cargo test --doc --all-features
+
+  # Checks the library alone, since every example needs `async` or `blocking`
+  # and is therefore not buildable under a reduced feature set. Examples are
+  # compiled by the lint job, which runs with --all-targets --all-features.
+  features:
+    name: Feature combinations
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        features:
+          - "--no-default-features"
+          - "--no-default-features --features blocking"
+          - "--no-default-features --features async"
+          - "--all-features"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: cargo check --lib ${{ matrix.features }}
+        run: cargo check --lib ${{ matrix.features }}
+
+  deny:
+    name: Cargo Deny
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: EmbarkStudios/cargo-deny-action@v2
+
+  typos:
+    name: Typos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: crate-ci/typos@v1.50.1

@@ -1,0 +1,30 @@
+# Maximum line width.
+max_width = 100
+# Use LF (\n) line endings.
+newline_style = "Unix"
+# Use field initialization shorthand when names match.
+use_field_init_shorthand = true
+# Use ? instead of try!.
+use_try_shorthand = true
+
+# Use spaces instead of tabs for indentation.
+hard_tabs = false
+# Number of spaces per indentation level.
+tab_spaces = 4
+# Merge multiple #[derive] attributes.
+merge_derives = true
+# Remove unnecessary nested parentheses.
+remove_nested_parens = true
+
+# Parse source code using the 2024 edition. Cargo reads this from Cargo.toml,
+# but editors such as rust-analyzer may invoke rustfmt directly with the 2015
+# edition by default. Declaring it here keeps both behaviors consistent.
+edition = "2024"
+# Pin the 2024 formatting style to prevent toolchain upgrades from introducing
+# repository-wide changes through new default formatting rules.
+style_edition = "2024"
+
+# Sort use declarations alphabetically.
+reorder_imports = true
+# Sort module declarations alphabetically.
+reorder_modules = true
