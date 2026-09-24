@@ -32,7 +32,7 @@ worker proxy carry a placeholder for you to fill in.
 
 ## reCAPTCHA v2
 
-[Docs](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v2)
+[Docs](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v2)
 
 | Example | Task type |
 | --- | --- |
@@ -45,7 +45,7 @@ worker proxy carry a placeholder for you to fill in.
 
 ## reCAPTCHA v3
 
-[Docs](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v3)
+[Docs](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v3)
 
 | Example | Task type |
 | --- | --- |

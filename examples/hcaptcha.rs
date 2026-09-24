@@ -3,7 +3,7 @@
 //! **Task type:** [`HCaptcha`]
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/hcaptcha).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/hcaptcha).
 
 use ezcapsolver::{AsyncEzCapSolverClient, HcaptchaTask};
 use serde_json::Value;

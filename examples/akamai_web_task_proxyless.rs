@@ -7,7 +7,7 @@
 //! round. Clearing the challenge takes up to eight rounds.
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/akamai).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/akamai-web).
 
 use ezcapsolver::{AkamaiWebTask, AsyncEzCapSolverClient};
 

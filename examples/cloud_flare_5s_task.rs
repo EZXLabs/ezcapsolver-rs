@@ -3,7 +3,7 @@
 //! **Task type:** [`CloudFlare5STask`]
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/cloudflare-5s).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/cloudflare-5s).
 
 use ezcapsolver::{AsyncEzCapSolverClient, Cloudflare5sTask};
 

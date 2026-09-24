@@ -7,7 +7,7 @@
 //! solution shape is not confirmed either, so everything arrives in `extra`.
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api).
 
 use base64::{Engine, engine::general_purpose::STANDARD};
 use ezcapsolver::{AsyncEzCapSolverClient, HcaptchaClassificationTask};

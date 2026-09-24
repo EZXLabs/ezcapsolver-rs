@@ -28,7 +28,7 @@ cargo run --example recaptcha_v2_task_proxyless
 
 ## reCAPTCHA v2
 
-[接口文档](https://ezxlabs.com/zh/docs/captcha/api/recaptcha-v2)
+[接口文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v2)
 
 | 示例 | 任务类型 |
 | --- | --- |
@@ -41,7 +41,7 @@ cargo run --example recaptcha_v2_task_proxyless
 
 ## reCAPTCHA v3
 
-[接口文档](https://ezxlabs.com/zh/docs/captcha/api/recaptcha-v3)
+[接口文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v3)
 
 | 示例 | 任务类型 |
 | --- | --- |

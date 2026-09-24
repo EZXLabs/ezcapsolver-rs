@@ -3,7 +3,7 @@
 //! **Task type:** [`ReCaptchaV2Classification`]
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v2-classification).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v2-classification).
 
 use base64::{Engine, engine::general_purpose::STANDARD};
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2ClassificationTask};

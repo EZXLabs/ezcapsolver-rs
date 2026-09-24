@@ -4,7 +4,7 @@
 //! **Task type:** [`ReCaptchaV2EnterpriseTaskProxyless`]
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v2).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v2).
 
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 

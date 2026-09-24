@@ -6,7 +6,7 @@
 //! directly instead of polling for it.
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/akamai-sbsd).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/akamai-sbsd).
 
 use ezcapsolver::{AkamaiSbsdTask, AsyncEzCapSolverClient};
 

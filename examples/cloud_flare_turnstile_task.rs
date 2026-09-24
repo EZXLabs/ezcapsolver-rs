@@ -3,7 +3,7 @@
 //! **Task type:** [`CloudFlareTurnstileTask`]
 //!
 //! For detailed usage instructions, see the
-//! [official EzCaptchaSolver documentation](https://ezxlabs.com/en/docs/captcha/api/turnstile).
+//! [official EzCaptchaSolver documentation](https://docs.ezxlabs.com/docs/captcha/api/turnstile).
 
 use ezcapsolver::{AsyncEzCapSolverClient, CloudflareTurnstileTask};
 
