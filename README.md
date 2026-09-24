@@ -1,19 +1,19 @@
 <div align="center">
-  <img src="./assets/ez-captcha-logo.svg" alt="EzCaptchaSolver" height="88">
+  <img src="./assets/ez-captcha-logo.svg" alt="EZCaptchaSolver by EZXLabs" height="88">
   &nbsp;&nbsp;
   <img src="./assets/rust.svg" alt="Rust" height="88">
-  <h1>EzCaptchaSolver Rust SDK</h1>
+  <h1>EZCaptchaSolver Rust SDK</h1>
   <p>
     <a href="https://github.com/EZXLabs/ezcapsolver-rs/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/EZXLabs/ezcapsolver-rs/actions/workflows/ci.yml/badge.svg"></a>
     <a href="https://crates.io/crates/ezcapsolver-rs"><img alt="crates.io" src="https://img.shields.io/crates/v/ezcapsolver-rs.svg?logo=rust"></a>
     <a href="https://docs.rs/ezcapsolver-rs"><img alt="docs.rs" src="https://img.shields.io/docsrs/ezcapsolver-rs?logo=docsdotrs"></a>
     <a href="./LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"></a>
     <a href="https://www.rust-lang.org"><img alt="Rust 1.96.0+" src="https://img.shields.io/badge/rust-1.96.0%2B-orange.svg?logo=rust&logoColor=white"></a>
-    <a href="https://ezxlabs.com"><img alt="Website" src="https://img.shields.io/badge/website-ezxlabs.com-FFDB29?logoColor=black"></a>
+    <a href="https://ezxlabs.com"><img alt="EZXLabs website" src="https://img.shields.io/badge/website-ezxlabs.com-FFDB29?logoColor=black"></a>
   </p>
   <p>
-    <a href="https://ezxlabs.com">🌐 Website</a> &nbsp;·&nbsp;
-    <a href="https://ezxlabs.com/en/docs/captcha/api">📚 API Docs</a> &nbsp;·&nbsp;
+    <a href="https://ezxlabs.com">🌐 Official website</a> &nbsp;·&nbsp;
+    <a href="https://docs.ezxlabs.com/docs/captcha/api">📚 EZCaptchaSolver API reference</a> &nbsp;·&nbsp;
     <a href="./examples">🧪 Examples</a> &nbsp;·&nbsp;
     <a href="#-supported-captcha-types">🧩 Captcha Types</a>
   </p>
@@ -22,7 +22,7 @@
 
 ---
 
-Integrate the [EzCaptchaSolver](https://ezxlabs.com) captcha solving service into your Rust program to automate solving captchas of any kind. Request samples for every captcha type are available in the [EzCaptchaSolver Docs](https://ezxlabs.com/en/docs/captcha/api).
+The EZCaptchaSolver Rust SDK is an open-source Rust client maintained by [EZXLabs](https://ezxlabs.com) for its CAPTCHA recognition task API. It provides typed requests and async and blocking clients for the supported task types below; the crate also includes a TLS forwarding task that does not solve CAPTCHAs. For the wider SDK family, see the [EZCaptchaSolver SDK product page](https://ezxlabs.com/products/sdk); for HTTP request and response fields, see the [EZCaptchaSolver API reference](https://docs.ezxlabs.com/docs/captcha/api); for Rust usage, see the [examples in this repository](./examples/README.md).
 
 ## 🧩 Supported Captcha Types
 
@@ -180,7 +180,7 @@ only a non-empty malformed value that is rejected.
 
 ### reCAPTCHA v2
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v2)
+[reCAPTCHA v2 API reference](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v2)
 
 The first five types share `RecaptchaV2Task` and `RecaptchaSolution`; only the method name differs.
 
@@ -309,7 +309,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### ReCaptchaV2Classification
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v2-classification)
+[reCAPTCHA v2 classification API reference](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v2-classification)
 
 An image task that returns the cell indexes to click rather than a token. `size` takes 1, 3 or 4 for a 1x1, 3x3 or 4x4 grid, and defaults to 4.
 
@@ -339,7 +339,7 @@ async fn run(client: &AsyncEzCapSolverClient, image_base64: String) -> Result<()
 
 ### reCAPTCHA v3
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/recaptcha-v3)
+[reCAPTCHA v3 API reference](https://docs.ezxlabs.com/docs/captcha/api/recaptcha-v3)
 
 The four types share `RecaptchaV3Task` and `RecaptchaSolution`. `page_action` has to match the `action` passed to `grecaptcha.execute` on the page, or the site-side check fails.
 
@@ -438,7 +438,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 ### FunCaptcha / Arkose Labs
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/funcaptcha)
+[FunCaptcha API reference](https://docs.ezxlabs.com/docs/captcha/api/funcaptcha)
 
 <a id="FuncaptchaTaskProxyless"></a>
 
@@ -490,7 +490,7 @@ async fn run(client: &AsyncEzCapSolverClient, image_base64: String) -> Result<()
 
 ### hCaptcha
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/hcaptcha)
+[hCaptcha API reference](https://docs.ezxlabs.com/docs/captcha/api/hcaptcha)
 
 <a id="HCaptcha"></a>
 
@@ -545,7 +545,7 @@ async fn run(client: &AsyncEzCapSolverClient, images: Vec<String>) -> Result<(),
 
 #### CloudFlare5STask
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/cloudflare-5s)
+[Cloudflare 5S API reference](https://docs.ezxlabs.com/docs/captcha/api/cloudflare-5s)
 
 The five-second interstitial **requires** a `proxy`, and what comes back is not a single token but the headers and clearance cookies to replay against the protected site:
 
@@ -573,7 +573,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### CloudFlareTurnstileTask
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/turnstile)
+[Cloudflare Turnstile API reference](https://docs.ezxlabs.com/docs/captcha/api/turnstile)
 
 Turnstile takes an optional `proxy` and returns a single token.
 
@@ -599,7 +599,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### AkamaiWEBTaskProxyless
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/akamai)
+[Akamai Web API reference](https://docs.ezxlabs.com/docs/captcha/api/akamai-web)
 
 Akamai Web is a multi-round flow: feed the `encodedata` of one round back as the
 `encode_data` of the next. The two spellings genuinely differ on the wire, and the
@@ -635,7 +635,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 
 #### AkamaiSBSDTaskProxyless
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/akamai-sbsd)
+[Akamai SBSD API reference](https://docs.ezxlabs.com/docs/captcha/api/akamai-sbsd)
 
 A single-round task; all six fields are required.
 
@@ -721,7 +721,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 
 #### PerimeterX
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/perimeterx)
+[PerimeterX API reference](https://docs.ezxlabs.com/docs/captcha/api/perimeterx)
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, PerimeterXTask};
@@ -744,7 +744,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### IncapsulaTaskProxyless
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/incapsula)
+[Incapsula API reference](https://docs.ezxlabs.com/docs/captcha/api/incapsula)
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, IncapsulaSolution, IncapsulaTask};
@@ -770,7 +770,7 @@ async fn run(client: &AsyncEzCapSolverClient, script: String) -> Result<(), Box<
 
 #### TlsTask
 
-[API docs](https://ezxlabs.com/en/docs/captcha/api/tls-forward)
+[TLS forwarding API reference](https://docs.ezxlabs.com/docs/captcha/api/tls-forward)
 
 This type does not solve a captcha. It sends one HTTP request through a worker's TLS fingerprint and hands the upstream response back untouched:
 

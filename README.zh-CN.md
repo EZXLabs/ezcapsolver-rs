@@ -1,19 +1,19 @@
 <div align="center">
-  <img src="./assets/ez-captcha-logo.svg" alt="EzCaptchaSolver" height="88">
+  <img src="./assets/ez-captcha-logo.svg" alt="EZCaptchaSolver by EZXLabs" height="88">
   &nbsp;&nbsp;
   <img src="./assets/rust.svg" alt="Rust" height="88">
-  <h1>EzCaptchaSolver Rust SDK</h1>
+  <h1>EZCaptchaSolver Rust SDK</h1>
   <p>
     <a href="https://github.com/EZXLabs/ezcapsolver-rs/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/EZXLabs/ezcapsolver-rs/actions/workflows/ci.yml/badge.svg"></a>
     <a href="https://crates.io/crates/ezcapsolver-rs"><img alt="crates.io" src="https://img.shields.io/crates/v/ezcapsolver-rs.svg?logo=rust"></a>
     <a href="https://docs.rs/ezcapsolver-rs"><img alt="docs.rs" src="https://img.shields.io/docsrs/ezcapsolver-rs?logo=docsdotrs"></a>
     <a href="./LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"></a>
     <a href="https://www.rust-lang.org"><img alt="Rust 1.96.0+" src="https://img.shields.io/badge/rust-1.96.0%2B-orange.svg?logo=rust&logoColor=white"></a>
-    <a href="https://ezxlabs.com"><img alt="Website" src="https://img.shields.io/badge/website-ezxlabs.com-FFDB29?logoColor=black"></a>
+    <a href="https://ezxlabs.com"><img alt="EZXLabs 官网" src="https://img.shields.io/badge/website-ezxlabs.com-FFDB29?logoColor=black"></a>
   </p>
   <p>
     <a href="https://ezxlabs.com">🌐 官网</a> &nbsp;·&nbsp;
-    <a href="https://ezxlabs.com/zh/docs/captcha/api">📚 接口文档</a> &nbsp;·&nbsp;
+    <a href="https://docs.ezxlabs.com/zh/docs/captcha/api">📚 EZCaptchaSolver API 文档</a> &nbsp;·&nbsp;
     <a href="./examples">🧪 示例</a> &nbsp;·&nbsp;
     <a href="#-支持的验证码类型">🧩 验证码类型</a>
   </p>
@@ -22,7 +22,7 @@
 
 ---
 
-将 [EzCaptchaSolver](https://ezxlabs.com) 验证码解决服务快速集成到您的 Rust 程序中，以便自动化解决任何类型的验证码。不同的验证码类型 API 请求示例，可在 [EzCaptchaSolver Docs](https://ezxlabs.com/zh/docs/captcha/api) 页面上找到。
+EZCaptchaSolver Rust SDK 是 [EZXLabs](https://ezxlabs.com) 维护的开源 Rust 客户端，用于接入其 CAPTCHA 识别任务 API。它为下列受支持的任务类型提供类型化请求、异步和阻塞客户端；crate 还包含不用于解验证码的 TLS 转发任务。了解 SDK 产品系列请查看 [EZCaptchaSolver SDK 产品页](https://ezxlabs.com/zh/products/sdk)，查看 HTTP 请求与响应字段请访问 [EZCaptchaSolver API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api)，Rust 调用代码请以[本仓库示例](./examples/README.zh-CN.md)为准。
 
 ## 🧩 支持的验证码类型
 
@@ -178,7 +178,7 @@ async fn run(client: &AsyncEzCapSolverClient, task: &RecaptchaV2Task) -> ezcapso
 
 ### reCAPTCHA v2
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/recaptcha-v2)
+[reCAPTCHA v2 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v2)
 
 前五个类型共用 `RecaptchaV2Task` 与 `RecaptchaSolution`，只有方法名不同。
 
@@ -307,7 +307,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### ReCaptchaV2Classification
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/recaptcha-v2-classification)
+[reCAPTCHA v2 图片识别 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v2-classification)
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, ReClassificationSolution, RecaptchaV2ClassificationTask};
@@ -335,7 +335,7 @@ async fn run(client: &AsyncEzCapSolverClient, image_base64: String) -> Result<()
 
 ### reCAPTCHA v3
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/recaptcha-v3)
+[reCAPTCHA v3 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v3)
 
 四个类型共用 `RecaptchaV3Task` 与 `RecaptchaSolution`。`page_action` 要与页面上
 `grecaptcha.execute` 传的 `action` 一致，否则站点侧校验会失败。
@@ -435,7 +435,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 ### FunCaptcha / Arkose Labs
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/funcaptcha)
+[FunCaptcha API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/funcaptcha)
 
 <a id="FuncaptchaTaskProxyless"></a>
 
@@ -485,7 +485,7 @@ async fn run(client: &AsyncEzCapSolverClient, image_base64: String) -> Result<()
 
 ### hCaptcha
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/hcaptcha)
+[hCaptcha API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/hcaptcha)
 
 <a id="HCaptcha"></a>
 
@@ -540,7 +540,7 @@ async fn run(client: &AsyncEzCapSolverClient, images: Vec<String>) -> Result<(),
 
 #### CloudFlare5STask
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/cloudflare-5s)
+[Cloudflare 5S API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/cloudflare-5s)
 
 5 秒盾**必须**传 `proxy`，而且返回的不是单个 token，而是要回放到目标站点的 header 与放行 cookie：
 
@@ -568,7 +568,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### CloudFlareTurnstileTask
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/turnstile)
+[Cloudflare Turnstile API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/turnstile)
 
 Turnstile 的 `proxy` 是可选的，返回单个 token。
 
@@ -594,7 +594,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### AkamaiWEBTaskProxyless
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/akamai)
+[Akamai Web API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/akamai-web)
 
 Akamai Web 是多轮流程：把本轮返回的 `encodedata` 作为下一轮的 `encode_data` 传回去。
 两个拼写在线格式上就是不同的，SDK 原样保留服务端的定义。
@@ -629,7 +629,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 
 #### AkamaiSBSDTaskProxyless
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/akamai-sbsd)
+[Akamai SBSD API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/akamai-sbsd)
 
 单轮任务，六个字段全部必填。
 
@@ -714,7 +714,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 
 #### PerimeterX
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/perimeterx)
+[PerimeterX API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/perimeterx)
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, PerimeterXTask};
@@ -737,7 +737,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 #### IncapsulaTaskProxyless
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/incapsula)
+[Incapsula API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/incapsula)
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, IncapsulaSolution, IncapsulaTask};
@@ -763,7 +763,7 @@ async fn run(client: &AsyncEzCapSolverClient, script: String) -> Result<(), Box<
 
 #### TlsTask
 
-[API 文档](https://ezxlabs.com/zh/docs/captcha/api/tls-forward)
+[TLS 转发 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/tls-forward)
 
 这个类型不解验证码，而是借 worker 的 TLS 指纹发一次 HTTP 请求，把上游响应原样带回来：
 
