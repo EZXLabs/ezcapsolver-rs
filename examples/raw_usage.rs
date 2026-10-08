@@ -15,7 +15,7 @@ const MAX_ATTEMPTS: usize = 24;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::new()?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let payload = json!({
         "websiteURL": "https://www.google.com/recaptcha/api2/demo",

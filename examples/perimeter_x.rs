@@ -14,7 +14,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, PerimeterXTask};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let task_payload = PerimeterXTask::builder()
         // PerimeterX application identifier, which starts with `PX`.

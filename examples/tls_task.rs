@@ -16,6 +16,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Build the client
     let config = ClientConfig::builder()
         .timeout(Duration::from_secs(30))
+        .client_key("YOUR_API_KEY")
         .polling(PollingConfig::new(Duration::from_secs(3), 10))
         .build();
     let client = AsyncEzCapSolverClient::with_config(config)?;

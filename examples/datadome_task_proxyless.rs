@@ -19,7 +19,7 @@ const CHALLENGE_HTML_B64: &str = "base64_encoded_challenge_page";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     // Step one: find out where the challenge lives.
     let first = client

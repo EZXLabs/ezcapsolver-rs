@@ -9,12 +9,12 @@ Run them from the repository root — the classification examples read their
 images from `examples/fixtures/`:
 
 ```bash
-export EZCAPTCHA_API_KEY=your-key
 cargo run --example recaptcha_v2_task_proxyless
 ```
 
-No example hardcodes a key; they all read `EZCAPTCHA_API_KEY`. Ones that need a
-worker proxy carry a placeholder for you to fill in.
+Every example passes the placeholder key `YOUR_API_KEY`; replace it with your
+own key before running. Ones that need a worker proxy carry a placeholder for
+you to fill in.
 
 > Every run creates a real task and is billed, whether or not the worker
 > succeeds. The reCAPTCHA v2 and hCaptcha examples point at the vendors' own

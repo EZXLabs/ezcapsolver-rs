@@ -17,7 +17,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, DataDomeJsType, DataDomeTagsTask};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let task_payload = DataDomeTagsTask::builder()
         // Read from the site's inline snippet as `window.ddjskey`.

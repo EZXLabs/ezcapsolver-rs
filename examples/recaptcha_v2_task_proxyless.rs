@@ -32,6 +32,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Build the client
     let config = ClientConfig::builder()
+        .client_key("YOUR_API_KEY")
         .timeout(Duration::from_secs(30))
         .polling(PollingConfig::new(Duration::from_secs(5), 24))
         .build();

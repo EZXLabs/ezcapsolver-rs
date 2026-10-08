@@ -120,13 +120,13 @@ ezcapsolver-rs = { version = "0.1", default-features = false, features = ["async
 
 ## 🚀 快速开始
 
-配置中没有显式提供密钥时，客户端会自动从环境变量 `EZCAPTCHA_API_KEY` 读取。
+将 `YOUR_API_KEY` 替换为你的密钥。配置中没有显式提供密钥时，客户端会自动从环境变量 `EZCAPSOLVER_API_KEY` 读取。
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -190,7 +190,7 @@ async fn run(client: &AsyncEzCapSolverClient, task: &RecaptchaV2Task) -> ezcapso
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -215,7 +215,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -239,7 +239,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -264,7 +264,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -288,7 +288,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -348,7 +348,7 @@ async fn run(client: &AsyncEzCapSolverClient, image_base64: String) -> Result<()
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -372,7 +372,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -395,7 +395,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -418,7 +418,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -445,7 +445,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, FunCaptchaTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = FunCaptchaTask::builder()
       .website_url("https://example.com")
       .website_key("your-public-key")
@@ -497,7 +497,7 @@ hCaptcha 的 token 字段是 `generated_pass_uuid`，不是 `token`——这是�
 use ezcapsolver::{AsyncEzCapSolverClient, HcaptchaTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = HcaptchaTask::builder()
       .website_url("https://example.com")
       .website_key("your-site-key")
@@ -548,7 +548,7 @@ async fn run(client: &AsyncEzCapSolverClient, images: Vec<String>) -> Result<(),
 use ezcapsolver::{AsyncEzCapSolverClient, Cloudflare5sTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = Cloudflare5sTask::builder()
       .website_url("https://example.com")
       .proxy("http://user:pass@127.0.0.1:8080")
@@ -576,7 +576,7 @@ Turnstile 的 `proxy` 是可选的，返回单个 token。
 use ezcapsolver::{AsyncEzCapSolverClient, CloudflareTurnstileTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = CloudflareTurnstileTask::builder()
       .website_url("https://example.com")
       .website_key("0x4AAA_your_site_key")
@@ -720,7 +720,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 use ezcapsolver::{AsyncEzCapSolverClient, PerimeterXTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = PerimeterXTask::builder()
       .website_key("PX_your_app_id")
       .build();
@@ -879,6 +879,7 @@ use std::time::Duration;
 use ezcapsolver::{ClientConfig, PollingConfig};
 
 let config = ClientConfig::builder()
+    .client_key("YOUR_API_KEY")
     .timeout(Duration::from_secs(30))
     .sync_timeout(Duration::from_secs(240))
     .polling(PollingConfig::new(Duration::from_secs(3), 50))
@@ -888,7 +889,7 @@ let config = ClientConfig::builder()
     .build();
 ```
 
-所有配置项均可省略，`ClientConfig::builder().build()` 与 `ClientConfig::default()` 一致。使用 `.client_key("your-client-key")` 显式设置密钥；未设置时，客户端在创建时读取 `EZCAPTCHA_API_KEY`。字符串 setter 接受 `&str` 或 `String`，`maybe_*` 方法可接收可选值。`build()` 直接返回配置，校验仍在创建客户端时执行。原有 `with_*` 方法继续可用。
+所有配置项均可省略，`ClientConfig::builder().build()` 与 `ClientConfig::default()` 一致。使用 `.client_key("YOUR_API_KEY")` 显式设置密钥；未设置时，客户端在创建时读取 `EZCAPSOLVER_API_KEY`。字符串 setter 接受 `&str` 或 `String`，`maybe_*` 方法可接收可选值。`build()` 直接返回配置，校验仍在创建客户端时执行。原有 `with_*` 方法继续可用。
 
 | 配置项 | 默认值 | 作用范围 |
 | --- | :---: | --- |
@@ -984,11 +985,9 @@ tracing_subscriber::registry()
 
 ## 🧪 可运行示例
 
-可运行的示例在 [`examples/`](./examples) 目录。先设置 `EZCAPTCHA_API_KEY`，然后：
+可运行的示例在 [`examples/`](./examples) 目录。先把示例中的占位符 `YOUR_API_KEY` 替换为你的密钥，然后：
 
 ```bash
-export EZCAPTCHA_API_KEY=your-client-key
-
 cargo run --example recaptcha_v2_task_proxyless
 cargo run --example cloud_flare_turnstile_task
 cargo run --example tls_task

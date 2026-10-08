@@ -25,7 +25,7 @@ async fn main() -> anyhow::Result<()> {
         .with(Targets::new().with_target("ezcapsolver", Level::DEBUG))
         .init();
 
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
     let task = RecaptchaV2Task::builder()
         .website_url("https://www.google.com/recaptcha/api2/demo")
         .website_key("6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-")

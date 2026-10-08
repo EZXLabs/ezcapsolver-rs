@@ -9,7 +9,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, CloudflareTurnstileTask};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     // `rq_data` is left out here. When a site uses it, send it as an object:
     // the service stringifies it itself on the way to the worker, so encoding

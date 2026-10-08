@@ -40,7 +40,7 @@ impl fmt::Debug for EzCapSolverClient {
 impl EzCapSolverClient {
     /// Creates a client with default configuration.
     ///
-    /// The client key is loaded from `EZCAPTCHA_API_KEY`.
+    /// The client key is loaded from `EZCAPSOLVER_API_KEY`.
     pub fn new() -> Result<Self> {
         Self::with_config(ClientConfig::default())
     }
@@ -48,7 +48,7 @@ impl EzCapSolverClient {
     /// Creates a client with the supplied configuration.
     ///
     /// If the configuration does not contain an explicit client key,
-    /// `EZCAPTCHA_API_KEY` is loaded from the environment.
+    /// `EZCAPSOLVER_API_KEY` is loaded from the environment.
     pub fn with_config(config: ClientConfig) -> Result<Self> {
         let client_key = config.resolve_client_key()?;
         let client_key_header = client_key_header(&client_key)?;

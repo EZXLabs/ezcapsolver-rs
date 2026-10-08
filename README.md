@@ -120,13 +120,13 @@ Task and response models remain available with the default features off — a cr
 
 ## 🚀 Quick Start
 
-The client reads `EZCAPTCHA_API_KEY` from the environment when the configuration carries no explicit key.
+Replace `YOUR_API_KEY` with your client key. When the configuration carries no explicit key, the client reads `EZCAPSOLVER_API_KEY` from the environment.
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -192,7 +192,7 @@ The first five types share `RecaptchaV2Task` and `RecaptchaSolution`; only the m
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -217,7 +217,7 @@ Same parameters as plain v2, on the high-score queue, returning a token scored 0
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -241,7 +241,7 @@ Carries the challenge-bound `s` parameter. It is not actually mandatory; leaving
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -266,7 +266,7 @@ Enterprise. If the site uses enterprise parameters beyond `data-s`, pass them th
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -290,7 +290,7 @@ Enterprise, carrying the `s` parameter.
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV2Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -351,7 +351,7 @@ The four types share `RecaptchaV3Task` and `RecaptchaSolution`. `page_action` ha
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -375,7 +375,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -398,7 +398,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -421,7 +421,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV3Task};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = RecaptchaV3Task::builder()
       .website_url("https://example.com")
       .website_key("6Lc_your_site_key")
@@ -448,7 +448,7 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 use ezcapsolver::{AsyncEzCapSolverClient, FunCaptchaTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = FunCaptchaTask::builder()
       .website_url("https://example.com")
       .website_key("your-public-key")
@@ -502,7 +502,7 @@ The hCaptcha token field is `generated_pass_uuid`, not `token` — that is the s
 use ezcapsolver::{AsyncEzCapSolverClient, HcaptchaTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = HcaptchaTask::builder()
       .website_url("https://example.com")
       .website_key("your-site-key")
@@ -553,7 +553,7 @@ The five-second interstitial **requires** a `proxy`, and what comes back is not 
 use ezcapsolver::{AsyncEzCapSolverClient, Cloudflare5sTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = Cloudflare5sTask::builder()
       .website_url("https://example.com")
       .proxy("http://user:pass@127.0.0.1:8080")
@@ -581,7 +581,7 @@ Turnstile takes an optional `proxy` and returns a single token.
 use ezcapsolver::{AsyncEzCapSolverClient, CloudflareTurnstileTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = CloudflareTurnstileTask::builder()
       .website_url("https://example.com")
       .website_key("0x4AAA_your_site_key")
@@ -727,7 +727,7 @@ async fn run(client: &AsyncEzCapSolverClient) -> Result<(), Box<dyn std::error::
 use ezcapsolver::{AsyncEzCapSolverClient, PerimeterXTask};
 
 async fn run() -> Result<(), Box<dyn std::error::Error>> {
-  let client = AsyncEzCapSolverClient::new()?;
+  let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
   let task = PerimeterXTask::builder()
       .website_key("PX_your_app_id")
       .build();
@@ -887,6 +887,7 @@ use std::time::Duration;
 use ezcapsolver::{ClientConfig, PollingConfig};
 
 let config = ClientConfig::builder()
+    .client_key("YOUR_API_KEY")
     .timeout(Duration::from_secs(30))
     .sync_timeout(Duration::from_secs(240))
     .polling(PollingConfig::new(Duration::from_secs(3), 50))
@@ -896,7 +897,7 @@ let config = ClientConfig::builder()
     .build();
 ```
 
-All settings are optional: `ClientConfig::builder().build()` equals `ClientConfig::default()`. Set `.client_key("your-client-key")` to use an explicit key; otherwise the client reads `EZCAPTCHA_API_KEY` when it is created. String setters accept `&str` or `String`, and `maybe_*` setters accept optional values. `build()` returns the configuration directly; validation still runs during client creation. The existing `with_*` methods remain available.
+All settings are optional: `ClientConfig::builder().build()` equals `ClientConfig::default()`. Set `.client_key("YOUR_API_KEY")` to use an explicit key; otherwise the client reads `EZCAPSOLVER_API_KEY` when it is created. String setters accept `&str` or `String`, and `maybe_*` setters accept optional values. `build()` returns the configuration directly; validation still runs during client creation. The existing `with_*` methods remain available.
 
 | Setting | Default | Covers |
 | --- | :---: | --- |
@@ -994,11 +995,9 @@ tracing_subscriber::registry()
 
 ## 🧪 Runnable Examples
 
-Runnable examples live in [`examples/`](./examples). Set `EZCAPTCHA_API_KEY` first, then:
+Runnable examples live in [`examples/`](./examples). Replace the `YOUR_API_KEY` placeholder in the examples with your client key, then:
 
 ```bash
-export EZCAPTCHA_API_KEY=your-client-key
-
 cargo run --example recaptcha_v2_task_proxyless
 cargo run --example cloud_flare_turnstile_task
 cargo run --example tls_task

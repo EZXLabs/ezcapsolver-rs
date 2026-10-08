@@ -10,7 +10,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     // Enterprise widgets take the same parameters as the standard ones, so the
     // request model is shared; only the task type differs.

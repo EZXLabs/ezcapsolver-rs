@@ -16,7 +16,7 @@ const SCRIPT: &str = "";
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let task_payload = IncapsulaTask::builder()
         .script(SCRIPT)

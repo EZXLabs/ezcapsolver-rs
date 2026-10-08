@@ -10,7 +10,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, FunCaptchaTask};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     // Two optional setters are left out: `data` carries the Arkose Labs blob as
     // a JSON string such as `{"blob":"..."}`, and `api_js_subdomain` is only

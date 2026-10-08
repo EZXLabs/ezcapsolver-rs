@@ -18,7 +18,7 @@ const SITES: [(&str, &str); 3] = [
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let mut running = tokio::task::JoinSet::new();
     for (url, key) in SITES {

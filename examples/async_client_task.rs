@@ -2,7 +2,7 @@
 //! then solve one task with it.
 //!
 //! Every setting below is optional — `AsyncEzCapSolverClient::new()` reads
-//! `EZCAPTCHA_API_KEY` and takes the defaults for the rest. They are all spelled
+//! `EZCAPSOLVER_API_KEY` and takes the defaults for the rest. They are all spelled
 //! out here so the knobs are visible in one place.
 //!
 //! For the task types themselves, see the per-type examples in this directory.
@@ -14,8 +14,8 @@ use ezcapsolver::{AsyncEzCapSolverClient, ClientConfig, PollingConfig, Recaptcha
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let config = ClientConfig::builder()
-        // Without this the client falls back to `EZCAPTCHA_API_KEY`.
-        .client_key(std::env::var("EZCAPTCHA_API_KEY")?)
+        // Without this the client falls back to `EZCAPSOLVER_API_KEY`.
+        .client_key("YOUR_API_KEY")
         .user_agent("my-app/1.0")
         // Two separate budgets, and they have to stay separate. Asynchronous
         // calls only enqueue and poll, so 30 seconds is already generous.

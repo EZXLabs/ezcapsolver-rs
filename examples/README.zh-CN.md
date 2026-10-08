@@ -7,11 +7,10 @@
 从仓库根目录运行——图片识别类示例会从 `examples/fixtures/` 读图：
 
 ```bash
-export EZCAPTCHA_API_KEY=your-key
 cargo run --example recaptcha_v2_task_proxyless
 ```
 
-所有示例都不硬编码密钥，一律读 `EZCAPTCHA_API_KEY`。需要 worker 代理的留了占位符，自行填入。
+所有示例都使用占位密钥 `YOUR_API_KEY`，运行前替换成你自己的密钥。需要 worker 代理的留了占位符，自行填入。
 
 > 每次运行都会创建一个真实任务并**扣费**，无论 worker 是否成功。reCAPTCHA v2 与
 > hCaptcha 的示例指向厂商自己的 demo 页面，可以直接跑；其余的站点密钥是占位符。

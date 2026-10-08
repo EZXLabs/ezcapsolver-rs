@@ -6,7 +6,7 @@
 //! one transport implementation, so their behaviour cannot drift.
 //!
 //! Every setting below is optional — `EzCapSolverClient::new()` reads
-//! `EZCAPTCHA_API_KEY` and takes the defaults for the rest.
+//! `EZCAPSOLVER_API_KEY` and takes the defaults for the rest.
 
 use std::time::Duration;
 
@@ -14,8 +14,8 @@ use ezcapsolver::{ClientConfig, EzCapSolverClient, PollingConfig, RecaptchaV2Tas
 
 fn main() -> anyhow::Result<()> {
     let config = ClientConfig::builder()
-        // Without this the client falls back to `EZCAPTCHA_API_KEY`.
-        .client_key(std::env::var("EZCAPTCHA_API_KEY")?)
+        // Without this the client falls back to `EZCAPSOLVER_API_KEY`.
+        .client_key("YOUR_API_KEY")
         .user_agent("my-app/1.0")
         // Two separate budgets, and they have to stay separate. Asynchronous
         // calls only enqueue and poll, so 30 seconds is already generous.

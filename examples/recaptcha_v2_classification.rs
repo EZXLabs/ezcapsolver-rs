@@ -10,7 +10,7 @@ use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2ClassificationTask};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let client = AsyncEzCapSolverClient::with_client_key(std::env::var("EZCAPTCHA_API_KEY")?)?;
+    let client = AsyncEzCapSolverClient::with_client_key("YOUR_API_KEY")?;
 
     let image = STANDARD.encode(std::fs::read("examples/fixtures/crosswalks3x3.jpg")?);
     let task_payload = RecaptchaV2ClassificationTask::builder()

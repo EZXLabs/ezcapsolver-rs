@@ -10,7 +10,7 @@ pub const DEFAULT_ASYNC_BASE_URL: &str = "https://api.ez-captcha.com";
 pub const DEFAULT_SYNC_BASE_URL: &str = "https://sync.ez-captcha.com";
 
 /// Default environment variable used to load the client key.
-pub const DEFAULT_CLIENT_KEY_ENV: &str = "EZCAPTCHA_API_KEY";
+pub const DEFAULT_CLIENT_KEY_ENV: &str = "EZCAPSOLVER_API_KEY";
 
 /// Default timeout for asynchronous endpoints and balance queries.
 pub const DEFAULT_TIMEOUT: Duration = Duration::from_secs(30);
@@ -100,7 +100,7 @@ impl PollingConfig {
 #[derive(Clone, PartialEq, Eq, bon::Builder)]
 #[builder(on(String, into))]
 pub struct ClientConfig {
-    /// Optional key; when unset, the client reads `EZCAPTCHA_API_KEY`.
+    /// Optional key; when unset, the client reads `EZCAPSOLVER_API_KEY`.
     client_key: Option<String>,
     /// Base URL for asynchronous task operations and balance queries.
     ///
