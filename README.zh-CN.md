@@ -122,6 +122,8 @@ ezcapsolver-rs = { version = "0.1", default-features = false, features = ["async
 
 将 `YOUR_API_KEY` 替换为你的密钥。配置中没有显式提供密钥时，客户端会自动从环境变量 `EZCAPSOLVER_API_KEY` 读取。
 
+完整 API 接入流程请查看 [EZCaptchaSolver 快速入门](https://docs.ezxlabs.com/zh/docs/captcha/guide)。
+
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, RecaptchaV2Task};
 
@@ -179,6 +181,8 @@ async fn run(client: &AsyncEzCapSolverClient, task: &RecaptchaV2Task) -> ezcapso
 ### reCAPTCHA v2
 
 [reCAPTCHA v2 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/recaptcha-v2)
+
+选择任务类型或查找 `websiteURL`、`websiteKey`、`pageAction` 时，请查看 [ReCaptcha 任务类型选择](https://docs.ezxlabs.com/zh/docs/captcha/tutorials/identify-recaptcha-version) 和 [ReCaptcha 任务参数查找](https://docs.ezxlabs.com/zh/docs/captcha/tutorials/find-recaptcha-parameters)。
 
 前五个类型共用 `RecaptchaV2Task` 与 `RecaptchaSolution`，只有方法名不同。
 
@@ -462,6 +466,8 @@ async fn run() -> Result<(), Box<dyn std::error::Error>> {
 
 <a id="FunCaptchaClassification"></a>
 
+[FunCaptcha 图片识别 API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/funcaptcha-classification)
+
 #### FunCaptchaClassification
 
 ```rust,no_run
@@ -656,6 +662,8 @@ async fn run(client: &AsyncEzCapSolverClient, script_base64: String) -> Result<(
 ```
 
 ### DataDome
+
+[DataDome API 文档](https://docs.ezxlabs.com/zh/docs/captcha/api/datadome)
 
 <a id="DataDomeTaskProxyless"></a>
 
