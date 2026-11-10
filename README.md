@@ -33,7 +33,7 @@ Captcha task types come in a synchronous and an asynchronous form:
 
 A captcha type can support both forms at once, and almost every type supports the synchronous one. A few types are asynchronous only.
 
-### reCAPTCHA v2
+### [reCAPTCHA v2](https://ezxlabs.com/products/recaptchav2)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
@@ -42,9 +42,9 @@ A captcha type can support both forms at once, and almost every type supports th
 | `ReCaptchaV2STaskProxyless` | all | [Example](#ReCaptchaV2STaskProxyless) | reCAPTCHA v2 carrying the challenge-bound `s` parameter |
 | `ReCaptchaV2EnterpriseTaskProxyless` | all | [Example](#ReCaptchaV2EnterpriseTaskProxyless) | reCAPTCHA v2 Enterprise |
 | `ReCaptchaV2SEnterpriseTaskProxyless` | all | [Example](#ReCaptchaV2SEnterpriseTaskProxyless) | reCAPTCHA v2 Enterprise, carrying the `s` parameter |
-| `ReCaptchaV2Classification` | sync | [Example](#ReCaptchaV2Classification) | reCAPTCHA v2 image recognition |
+| `ReCaptchaV2Classification` | sync | [Example](#ReCaptchaV2Classification) | [reCAPTCHA v2 image recognition](https://ezxlabs.com/products/image-captcha) |
 
-### reCAPTCHA v3
+### [reCAPTCHA v3](https://ezxlabs.com/products/recaptchav3)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
@@ -53,14 +53,14 @@ A captcha type can support both forms at once, and almost every type supports th
 | `ReCaptchaV3EnterpriseTaskProxyless` | all | [Example](#ReCaptchaV3EnterpriseTaskProxyless) | reCAPTCHA v3 Enterprise |
 | `ReCaptchaV3EnterpriseTaskProxylessS9` | all | [Example](#ReCaptchaV3EnterpriseTaskProxylessS9) | reCAPTCHA v3 Enterprise, returns a token scored ≥ 0.9 |
 
-### FunCaptcha / Arkose Labs
+### [FunCaptcha / Arkose Labs](https://ezxlabs.com/products/funcaptcha)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
 | `FuncaptchaTaskProxyless` | async | [Example](#FuncaptchaTaskProxyless) | FunCaptcha / Arkose Labs |
 | `FunCaptchaClassification` | sync | [Example](#FunCaptchaClassification) | FunCaptcha image recognition |
 
-### hCaptcha
+### [hCaptcha](https://ezxlabs.com/products/hcaptcha)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
@@ -71,10 +71,10 @@ A captcha type can support both forms at once, and almost every type supports th
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
-| `CloudFlare5STask` | async | [Example](#CloudFlare5STask) | CF five-second interstitial, **requires** a `proxy` |
-| `CloudFlareTurnstileTask` | async | [Example](#CloudFlareTurnstileTask) | Turnstile, returns a token |
+| `CloudFlare5STask` | async | [Example](#CloudFlare5STask) | [CF five-second interstitial](https://ezxlabs.com/products/cloudflare-5s), **requires** a `proxy` |
+| `CloudFlareTurnstileTask` | async | [Example](#CloudFlareTurnstileTask) | [Turnstile](https://ezxlabs.com/products/cloudflare-turnstile), returns a token |
 
-### Akamai
+### [Akamai](https://ezxlabs.com/products/akamai)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
@@ -83,7 +83,7 @@ A captcha type can support both forms at once, and almost every type supports th
 
 > Akamai Web is a multi-round flow: feed the `encodedata` of one round back as the `encode_data` of the next. The two spellings genuinely differ on the wire; the SDK keeps the service's definitions as they are rather than "fixing" them.
 
-### DataDome
+### [DataDome](https://ezxlabs.com/products/datadome)
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
@@ -94,9 +94,9 @@ A captcha type can support both forms at once, and almost every type supports th
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
-| `PerimeterX` | async | [Example](#PerimeterX) | PerimeterX clearance cookies |
-| `IncapsulaTaskProxyless` | sync | [Example](#IncapsulaTaskProxyless) | Incapsula Reese84 payload |
-| `TlsTask` | sync | [Example](#TlsTask) | HTTP request forwarded over TLS, returns the upstream response |
+| `PerimeterX` | async | [Example](#PerimeterX) | [PerimeterX clearance cookies](https://ezxlabs.com/products/perimeterx) |
+| `IncapsulaTaskProxyless` | sync | [Example](#IncapsulaTaskProxyless) | [Incapsula Reese84 payload](https://ezxlabs.com/products/incapsula) |
+| `TlsTask` | sync | [Example](#TlsTask) | [HTTP request forwarded over TLS](https://ezxlabs.com/products/tls-forward), returns the upstream response |
 
 ## 📦 Installation
 
