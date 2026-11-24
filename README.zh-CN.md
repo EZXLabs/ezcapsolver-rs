@@ -87,7 +87,7 @@ EZCaptchaSolver Rust SDK 是 [EZXLabs](https://ezxlabs.com) 维护的开源 Rust
 
 | 任务类型 | 支持方式 | 示例 | 描述 |
 | :-: | :---: | :-: | --- |
-| `DataDomeTaskProxyless` | sync | [示例](#DataDomeTaskProxyless) | 拦截后的挑战，分两步，靠 `step` 区分 |
+| `DataDomeTaskProxyless` | sync | [示例](#DataDomeTaskProxyless) | 拦截后的挑战，分三步，靠 `step` 区分 |
 | `DataDomeTagsTaskProxyless` | sync | [示例](#DataDomeTagsTaskProxyless) | 正常浏览路径上报指纹 |
 
 ### 其他防护与转发任务
@@ -669,7 +669,7 @@ async fn run(client: &AsyncEzCapSolverClient, script_base64: String) -> Result<(
 
 #### DataDomeTaskProxyless
 
-DataDome 拦截后的挑战分两步，两步共用 `DataDomeTask`，靠 `step` 区分；`DataDomeSolution`
+DataDome 拦截后的挑战分三步，三步共用 `DataDomeTask`，靠 `step` 区分；`DataDomeSolution`
 里哪些字段有值取决于当前是哪一步：
 
 ```rust,no_run

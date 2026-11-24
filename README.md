@@ -87,7 +87,7 @@ A captcha type can support both forms at once, and almost every type supports th
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
-| `DataDomeTaskProxyless` | sync | [Example](#DataDomeTaskProxyless) | The challenge after an interception, in two steps selected by `step` |
+| `DataDomeTaskProxyless` | sync | [Example](#DataDomeTaskProxyless) | The challenge after an interception, in three steps selected by `step` |
 | `DataDomeTagsTaskProxyless` | sync | [Example](#DataDomeTagsTaskProxyless) | Reports a fingerprint on the normal browsing path |
 
 ### Other protection and forwarding tasks
@@ -675,7 +675,7 @@ async fn run(client: &AsyncEzCapSolverClient, script_base64: String) -> Result<(
 
 #### DataDomeTaskProxyless
 
-The challenge after a DataDome interception runs in two steps. Both share
+The challenge after a DataDome interception runs in three steps. All share
 `DataDomeTask` and are selected by `step`; which fields of `DataDomeSolution`
 carry a value depends on the step:
 

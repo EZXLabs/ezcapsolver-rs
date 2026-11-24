@@ -317,11 +317,11 @@ impl ReClassificationSolution {
     }
 }
 
-/// DataDome solution, returned by both challenge steps.
+/// DataDome solution, returned by every challenge step.
 ///
 /// Step 1 carries the challenge URL in `url`; step 2 carries the validation
 /// instructions. Earlier workers returned step 1 as a bare string — it is an
-/// object now, so both steps decode into this one type.
+/// object now, so every step decodes into this one type.
 ///
 /// Shared by `DataDomeTaskProxyless` and `DataDomeTagsTaskProxyless`.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -336,6 +336,12 @@ pub struct DataDomeSolution {
     /// Optional validation request body.
     #[serde(default)]
     pub body: Option<String>,
+    /// Optional status flag reported by the worker.
+    #[serde(default)]
+    pub status: Option<bool>,
+    /// Optional delay, in milliseconds, to wait before submitting.
+    #[serde(default)]
+    pub submit_after_ms: Option<u32>,
     /// Additional worker fields.
     #[serde(flatten, skip_serializing)]
     pub extra: BTreeMap<String, Value>,

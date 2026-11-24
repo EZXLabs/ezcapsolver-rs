@@ -78,9 +78,7 @@ fn every_task_builder_preserves_existing_defaults() -> Result<(), serde_json::Er
         lang: "en",
         script_base64: "script-data",
     });
-    assert_matches_literal!(DataDomeTask {
-        html_b64: "html-data",
-    });
+    assert_matches_literal!(DataDomeTask {});
     assert_matches_literal!(DataDomeTagsTask {
         ddk: "key",
         bpc: 1_u64,
@@ -157,9 +155,17 @@ fn builder_defaults_can_be_overridden() {
         .html_b64("html-data")
         .step(DataDomeStep::Two)
         .image("image-data")
+        .hash("challenge-hash")
+        .user_agent("user-agent")
+        .external_js_hash("js-hash")
+        .external_js_base64("js-data")
         .build();
     assert_eq!(data_dome.step, DataDomeStep::Two);
     assert_eq!(data_dome.image, "image-data");
+    assert_eq!(data_dome.hash.as_deref(), Some("challenge-hash"));
+    assert_eq!(data_dome.user_agent.as_deref(), Some("user-agent"));
+    assert_eq!(data_dome.external_js_hash.as_deref(), Some("js-hash"));
+    assert_eq!(data_dome.external_js_base64.as_deref(), Some("js-data"));
 
     let tags = DataDomeTagsTask::builder()
         .ddk("key")

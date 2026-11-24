@@ -271,12 +271,16 @@ fn mixed_naming_strategies_match_the_service_contract() -> Result<(), serde_json
     );
 
     let data_dome = DataDomeTask {
-        html_b64: "PGh0bWw+".to_owned(),
+        html_b64: Some("PGh0bWw+".to_owned()),
         step: DataDomeStep::Two,
         image: String::new(),
         referer: None,
         parent_url: Some("https://example.com/parent".to_owned()),
         equipment: None,
+        hash: Some("challenge-hash".to_owned()),
+        user_agent: Some("Mozilla/5.0".to_owned()),
+        external_js_hash: Some("js-hash".to_owned()),
+        external_js_base64: Some("anM=".to_owned()),
         extra: Default::default(),
     };
     assert_eq!(
@@ -285,8 +289,22 @@ fn mixed_naming_strategies_match_the_service_contract() -> Result<(), serde_json
             "html_b64": "PGh0bWw+",
             "step": "2",
             "image": "",
-            "parent_url": "https://example.com/parent"
+            "parent_url": "https://example.com/parent",
+            "hash": "challenge-hash",
+            "user_agent": "Mozilla/5.0",
+            "external_js_hash": "js-hash",
+            "external_js_base64": "anM="
         })
+    );
+
+    // Step 3 needs no HTML, so an unset `html_b64` stays off the wire.
+    let step_three = DataDomeTask {
+        step: DataDomeStep::Three,
+        ..Default::default()
+    };
+    assert_eq!(
+        serde_json::to_value(step_three)?,
+        json!({"step": "3", "image": ""})
     );
 
     let incapsula = IncapsulaTask {
@@ -339,6 +357,15 @@ fn enum_backed_task_fields_use_service_values() -> Result<(), serde_json::Error>
             "fields": {}
         })
     );
+
+    // DataDome `step` is a string on the wire, not a number.
+    for (step, wire) in [
+        (DataDomeStep::One, "1"),
+        (DataDomeStep::Two, "2"),
+        (DataDomeStep::Three, "3"),
+    ] {
+        assert_eq!(serde_json::to_value(step)?, json!(wire));
+    }
     Ok(())
 }
 

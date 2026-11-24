@@ -15,6 +15,9 @@ pub enum DataDomeStep {
     /// Produce validation instructions.
     #[serde(rename = "2")]
     Two,
+    /// Third step. The service does not require `html_b64` for it.
+    #[serde(rename = "3")]
+    Three,
 }
 
 /// DataDome tags JavaScript mode.
@@ -33,8 +36,9 @@ pub enum DataDomeJsType {
 #[builder(on(String, into))]
 #[serde(remote = "Self")]
 pub struct DataDomeTask {
-    /// Base64-encoded challenge HTML.
-    pub html_b64: String,
+    /// Optional base64-encoded challenge HTML; step 3 does not require it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub html_b64: Option<String>,
     /// Challenge workflow step.
     #[builder(default)]
     pub step: DataDomeStep,
@@ -50,6 +54,18 @@ pub struct DataDomeTask {
     /// Optional equipment identifier.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub equipment: Option<String>,
+    /// Optional hash value.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hash: Option<String>,
+    /// Optional browser user agent.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub user_agent: Option<String>,
+    /// Optional hash of the external JavaScript.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_js_hash: Option<String>,
+    /// Optional base64-encoded external JavaScript.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_js_base64: Option<String>,
     /// Additional worker parameters.
     #[serde(skip)]
     #[builder(default)]
