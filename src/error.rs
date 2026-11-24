@@ -227,6 +227,29 @@ pub enum Error {
         /// Raw solution value that failed to decode, preserved in full.
         raw: Box<Value>,
     },
+
+    /// DataDome banned the visitor outright, which no challenge clears.
+    ///
+    /// The ban follows the IP, so retry through a different proxy.
+    #[cfg(feature = "datadome")]
+    #[error("blocked by DataDome: {0}; retry through a different proxy")]
+    DataDomeBlocked(String),
+
+    /// The DataDome challenge flow could not be completed.
+    ///
+    /// The message names the stage that failed: an unusable input, a challenge
+    /// without a script, or a submission DataDome did not accept.
+    #[cfg(feature = "datadome")]
+    #[error("DataDome challenge failed: {0}")]
+    DataDome(String),
+
+    /// A browser-side request of the DataDome challenge flow failed.
+    ///
+    /// These requests go to the protected site and to DataDome, not to the
+    /// EzCaptchaSolver API.
+    #[cfg(feature = "datadome")]
+    #[error("browser request failed: {0}")]
+    BrowserRequest(#[source] Box<dyn std::error::Error + Send + Sync>),
 }
 
 /// Renders a raw solution for an error message, truncated so an oversized
