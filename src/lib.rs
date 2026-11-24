@@ -16,6 +16,9 @@ mod async_client;
 mod blocking_client;
 mod config;
 mod error;
+#[cfg(feature = "datadome")]
+#[cfg_attr(docsrs, doc(cfg(feature = "datadome")))]
+pub mod ext;
 #[cfg(any(feature = "async", feature = "blocking"))]
 mod request;
 mod response;

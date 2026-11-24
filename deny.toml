@@ -54,6 +54,8 @@ unused-allowed-license = "allow"
 # Per-crate escape hatch for a license that should not be allowed globally.
 exceptions = [
   # { crate = "some-crate", allow = ["MPL-2.0"] },
+  # WebSocket support inside lkrequest, unmodified.
+  { crate = "yawc", allow = ["MPL-2.0"] },
 ]
 
 [licenses.private]
@@ -89,4 +91,4 @@ skip-tree = [
 unknown-registry = "deny"
 unknown-git = "deny"
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
-allow-git = []
+allow-git = ["https://github.com/EZXLabs/lkrequest-rs"]

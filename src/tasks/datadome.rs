@@ -8,13 +8,16 @@ use super::ExtraFields;
 /// DataDome challenge step.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Default)]
 pub enum DataDomeStep {
-    /// Fetch the challenge URL.
+    /// Find the challenge address of an intercepted page.
     #[serde(rename = "1")]
     #[default]
     One,
-    /// Produce validation instructions.
+    /// Ask whether the service already caches a challenge script, by `hash`.
     #[serde(rename = "2")]
     Two,
+    /// Compute the answer to submit from the challenge page and its script.
+    #[serde(rename = "3")]
+    Three,
 }
 
 /// DataDome tags JavaScript mode.
@@ -33,8 +36,10 @@ pub enum DataDomeJsType {
 #[builder(on(String, into))]
 #[serde(remote = "Self")]
 pub struct DataDomeTask {
-    /// Base64-encoded challenge HTML.
-    pub html_b64: String,
+    /// Base64-encoded page: the intercepted page on step 1, the challenge page
+    /// on step 3. Step 2 leaves it unset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub html_b64: Option<String>,
     /// Challenge workflow step.
     #[builder(default)]
     pub step: DataDomeStep,
@@ -50,6 +55,19 @@ pub struct DataDomeTask {
     /// Optional equipment identifier.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub equipment: Option<String>,
+    /// Step 2: hash of the challenge script to look up in the service cache.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub hash: Option<String>,
+    /// Optional browser user agent the challenge is solved for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub user_agent: Option<String>,
+    /// Step 3: hash of the challenge script, when step 2 reported it cached.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_js_hash: Option<String>,
+    /// Step 3: the base64-encoded challenge script, when step 2 reported it
+    /// not cached.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_js_base64: Option<String>,
     /// Additional worker parameters.
     #[serde(skip)]
     #[builder(default)]

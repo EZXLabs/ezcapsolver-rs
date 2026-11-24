@@ -385,11 +385,11 @@ fn a_perimeter_x_solution_reads_top_level_cookies() -> Result<(), Box<dyn std::e
     Ok(())
 }
 
-/// Two DataDome types and two steps now decode into one structure.
+/// Two DataDome types and every step decode into one structure.
 ///
 /// Step 1 used to return a bare string and now wraps it in a `{"url": ...}` object.
 #[test]
-fn both_data_dome_steps_decode_into_one_structure() -> Result<(), Box<dyn std::error::Error>> {
+fn every_data_dome_step_decodes_into_one_structure() -> Result<(), Box<dyn std::error::Error>> {
     let step_one: DataDomeSolution = serde_json::from_value(
         json!({"url": "https://geo.captcha-delivery.com/captcha/?initialCid=x"}),
     )?;
@@ -408,6 +408,18 @@ fn both_data_dome_steps_decode_into_one_structure() -> Result<(), Box<dyn std::e
     assert_eq!(step_two.kind.as_deref(), Some("slider"));
     assert_eq!(step_two.body.as_deref(), Some("payload"));
     assert_eq!(step_two.extra["futureField"], json!(1));
+    assert!(step_two.status.is_none());
+    assert!(step_two.submit_after_ms.is_none());
+
+    // The optional status fields decode into declared fields, not into `extra`.
+    let with_status: DataDomeSolution = serde_json::from_value(json!({
+        "url": "https://geo.captcha-delivery.com/captcha/check",
+        "status": true,
+        "submit_after_ms": 1500
+    }))?;
+    assert_eq!(with_status.status, Some(true));
+    assert_eq!(with_status.submit_after_ms, Some(1500));
+    assert!(with_status.extra.is_empty());
     Ok(())
 }
 

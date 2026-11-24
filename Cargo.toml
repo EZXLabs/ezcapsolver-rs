@@ -32,6 +32,12 @@ thiserror = "2"
 tracing = { version = "0.1", optional = true }
 bon = "3.10"
 pastey = "0.2"
+# Browser-side requests of the DataDome challenge flow, behind `datadome`.
+lkrequest = { git = "https://github.com/EZXLabs/lkrequest-rs", version = "0.3", optional = true }
+base64 = { version = "0.23", optional = true }
+md-5 = { version = "0.11", optional = true }
+regex = { version = "1", optional = true }
+url = { version = "2", optional = true }
 
 [dev-dependencies]
 mockito = "1"
@@ -44,6 +50,13 @@ base64 = "0.23"
 default = ["blocking", "async"]
 async = ["dep:reqwest", "dep:tokio", "dep:tracing"]
 blocking = ["dep:reqwest", "dep:tracing", "reqwest/blocking"]
+# Extension: the DataDome challenge workflow in `ext`, browser-side requests
+# through a Chrome TLS fingerprint plus the three DataDomeTaskProxyless steps.
+datadome = ["async", "dep:lkrequest", "dep:base64", "dep:md-5", "dep:regex", "dep:url"]
+
+[[example]]
+name = "datadome_workflow"
+required-features = ["datadome"]
 
 
 [lints.rust]

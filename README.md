@@ -87,7 +87,7 @@ A captcha type can support both forms at once, and almost every type supports th
 
 | Task type | Modes | Example | Description |
 | :-: | :---: | :-: | --- |
-| `DataDomeTaskProxyless` | sync | [Example](#DataDomeTaskProxyless) | The challenge after an interception, in two steps selected by `step` |
+| `DataDomeTaskProxyless` | sync | [Example](#DataDomeTaskProxyless) | The challenge after an interception, in three steps selected by `step` |
 | `DataDomeTagsTaskProxyless` | sync | [Example](#DataDomeTagsTaskProxyless) | Reports a fingerprint on the normal browsing path |
 
 ### Other protection and forwarding tasks
@@ -675,9 +675,11 @@ async fn run(client: &AsyncEzCapSolverClient, script_base64: String) -> Result<(
 
 #### DataDomeTaskProxyless
 
-The challenge after a DataDome interception runs in two steps. Both share
-`DataDomeTask` and are selected by `step`; which fields of `DataDomeSolution`
-carry a value depends on the step:
+The challenge after a DataDome interception runs in three steps. All share
+`DataDomeTask` and are selected by `step`. Step 1 turns the intercepted page
+into the challenge address, step 2 asks whether the service already caches the
+challenge script by its `hash`, and step 3 returns the submission in `url`,
+`body` and `submit_after_ms`:
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, DataDomeSolution, DataDomeStep, DataDomeTask};
@@ -692,7 +694,8 @@ async fn run(client: &AsyncEzCapSolverClient, html_b64: String) -> Result<(), Bo
 
   println!("challenge url = {:?}", solution.url);
 
-  // Step two uses DataDomeStep::Two and brings back the validation body.
+  // Step two sends the script hash and reads `status`; step three sends the
+  // challenge page with the script, or only its hash when it is cached.
   Ok(())
 }
 ```
