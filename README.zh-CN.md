@@ -669,8 +669,9 @@ async fn run(client: &AsyncEzCapSolverClient, script_base64: String) -> Result<(
 
 #### DataDomeTaskProxyless
 
-DataDome 拦截后的挑战分三步，三步共用 `DataDomeTask`，靠 `step` 区分；`DataDomeSolution`
-里哪些字段有值取决于当前是哪一步：
+DataDome 拦截后的挑战分三步，三步共用 `DataDomeTask`，靠 `step` 区分。第一步从被拦截页面拿到
+挑战地址，第二步用 `hash` 询问服务端是否已缓存挑战脚本，第三步在 `url`、`body`、
+`submit_after_ms` 里返回交卷信息：
 
 ```rust,no_run
 use ezcapsolver::{AsyncEzCapSolverClient, DataDomeSolution, DataDomeStep, DataDomeTask};
@@ -685,7 +686,7 @@ async fn run(client: &AsyncEzCapSolverClient, html_b64: String) -> Result<(), Bo
 
   println!("挑战地址 = {:?}", solution.url);
 
-  // 第二步换成 DataDomeStep::Two，结果里带回校验用的 body。
+  // 第二步传脚本 hash、读 `status`；第三步传挑战页和脚本，脚本已缓存时只传 hash。
   Ok(())
 }
 ```

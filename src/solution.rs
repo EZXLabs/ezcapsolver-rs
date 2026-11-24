@@ -319,9 +319,10 @@ impl ReClassificationSolution {
 
 /// DataDome solution, returned by every challenge step.
 ///
-/// Step 1 carries the challenge URL in `url`; step 2 carries the validation
-/// instructions. Earlier workers returned step 1 as a bare string — it is an
-/// object now, so every step decodes into this one type.
+/// Step 1 carries the challenge URL in `url`; step 2 only `status`; step 3 the
+/// submission in `url`, `body`, `kind` and `submit_after_ms`. Earlier workers
+/// returned step 1 as a bare string — it is an object now, so every step
+/// decodes into this one type.
 ///
 /// Shared by `DataDomeTaskProxyless` and `DataDomeTagsTaskProxyless`.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -330,16 +331,17 @@ pub struct DataDomeSolution {
     /// Challenge kind, such as `slider` or `interstitial`.
     #[serde(default)]
     pub kind: Option<String>,
-    /// Challenge URL on step 1, validation endpoint on step 2.
+    /// Challenge URL on step 1, submission URL on step 3.
     #[serde(default)]
     pub url: Option<String>,
-    /// Optional validation request body.
+    /// Optional submission body on step 3.
     #[serde(default)]
     pub body: Option<String>,
-    /// Optional status flag reported by the worker.
+    /// Step 2: whether the service already caches the challenge script.
     #[serde(default)]
     pub status: Option<bool>,
-    /// Optional delay, in milliseconds, to wait before submitting.
+    /// Step 3: milliseconds to wait, from when the challenge page loaded,
+    /// before submitting.
     #[serde(default)]
     pub submit_after_ms: Option<u32>,
     /// Additional worker fields.

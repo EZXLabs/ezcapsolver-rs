@@ -8,14 +8,14 @@ use super::ExtraFields;
 /// DataDome challenge step.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Default)]
 pub enum DataDomeStep {
-    /// Fetch the challenge URL.
+    /// Find the challenge address of an intercepted page.
     #[serde(rename = "1")]
     #[default]
     One,
-    /// Produce validation instructions.
+    /// Ask whether the service already caches a challenge script, by `hash`.
     #[serde(rename = "2")]
     Two,
-    /// Third step. The service does not require `html_b64` for it.
+    /// Compute the answer to submit from the challenge page and its script.
     #[serde(rename = "3")]
     Three,
 }
@@ -36,7 +36,8 @@ pub enum DataDomeJsType {
 #[builder(on(String, into))]
 #[serde(remote = "Self")]
 pub struct DataDomeTask {
-    /// Optional base64-encoded challenge HTML; step 3 does not require it.
+    /// Base64-encoded page: the intercepted page on step 1, the challenge page
+    /// on step 3. Step 2 leaves it unset.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub html_b64: Option<String>,
     /// Challenge workflow step.
@@ -54,16 +55,17 @@ pub struct DataDomeTask {
     /// Optional equipment identifier.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub equipment: Option<String>,
-    /// Optional hash value.
+    /// Step 2: hash of the challenge script to look up in the service cache.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub hash: Option<String>,
-    /// Optional browser user agent.
+    /// Optional browser user agent the challenge is solved for.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub user_agent: Option<String>,
-    /// Optional hash of the external JavaScript.
+    /// Step 3: hash of the challenge script, when step 2 reported it cached.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub external_js_hash: Option<String>,
-    /// Optional base64-encoded external JavaScript.
+    /// Step 3: the base64-encoded challenge script, when step 2 reported it
+    /// not cached.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub external_js_base64: Option<String>,
     /// Additional worker parameters.
